@@ -1,4 +1,4 @@
-//declared global variables
+//assign global variables
 let won = 0;
 let tied = 0;
 let lost = 0;
@@ -17,21 +17,19 @@ const scissorsEl = document.getElementById("scissors-button");
 scissorsEl.addEventListener("click", function() {
     displayMessage("scissors")
 });
-//function that displays what you pressed onto the page and calls the random function
+//function that displays what you pressed onto the page, gives the computer a random answer and displays that to the page
 function displayMessage(buttonPressed) {
     document.getElementById("your-selection").innerHTML = "You clicked: " + buttonPressed;
-    randomize(buttonPressed);
-}
-//function that displays what computer randomly picked onto the page
-function displayComputerMessage(computerPicked, userSelected) {
-    document.getElementById("computer-selection").innerHTML = "The computer picked: " + computerPicked;
-    //whoWon(computerPicked, userSelected);
-    if ((computerPicked == "rock" && userSelected == "rock") || (computerPicked == "paper" && userSelected == "paper") || (computerPicked == "scissors" && userSelected == "scissors")) {
+    let randomArray = ["rock", "paper", "scissors"];
+    let randomNumber = Math.floor(Math.random() * randomArray.length);
+    let randomResult = randomArray[randomNumber];
+    document.getElementById("computer-selection").innerHTML = "The computer picked: " + randomResult;
+    if ((randomResult == "rock" && buttonPressed == "rock") || (randomResult == "paper" && buttonPressed == "paper") || (randomResult == "scissors" && buttonPressed == "scissors")) {
         answer = "tied";
         displayWinnerMessage(answer);
         results(answer);
     }
-    else if ((computerPicked == "rock" && userSelected == "paper") || (computerPicked == "paper" && userSelected == "scissors") || (computerPicked == "scissors" && userSelected == "rock")) {
+    else if ((randomResult == "rock" && buttonPressed == "paper") || (randomResult == "paper" && buttonPressed == "scissors") || (randomResult == "scissors" && buttonPressed == "rock")) {
         answer = "won";
         displayWinnerMessage(answer);
         results(answer);
@@ -45,41 +43,20 @@ function displayComputerMessage(computerPicked, userSelected) {
 //function that displays if you won, tied or lost
 function displayWinnerMessage(winner) {
     document.getElementById("game-result").innerHTML = "You " + winner + " !";
-}
-//function that displays total results of wins
-function displaywinResults(result) {
-    document.getElementById("result-won").innerHTML = result + " Wins";
-}
-//function that displays total results of ties
-function displaytieResults(result) {
-    document.getElementById("result-tied").innerHTML = result + " Ties";
-}
-//function that displays total results of losses
-function displaylossResults(result) {
-    document.getElementById("result-loss").innerHTML = result + " Losses";
-}
-//funtion to act as computer player - picks randomly between 3 options
-function randomize(userSelected) {
-    let randomArray = ["rock", "paper", "scissors"];
-    let randomNumber = Math.floor(Math.random() * randomArray.length);
-    let randomResult = randomArray[randomNumber];
-    displayComputerMessage(randomResult, userSelected);
-}
-//function to figure out who won the individual games
-//function whoWon(computerPicked, userSelected) {
-   
-//function using if statements to calculate total wins, ties, and losses
+} 
+//function using if statements to calculate total wins, ties, and losses and displays to the screen
 function results(answer) {
+
     if (answer == "won") {
-        won = won + 1;
-        displaywinResults(won);
+        won++;
+       document.getElementById("result-won").innerHTML = won + " Wins";
     }
     else if (answer == "tied") {
-        tied = tied + 1;
-        displaytieResults(tied);
+        tied++;
+        document.getElementById("result-tied").innerHTML = tied + " Ties";
     }
     else {
-        lost = lost + 1;
-        displaylossResults(lost);
+        lost++;
+        document.getElementById("result-loss").innerHTML = lost + " Losses";
     }
 }
