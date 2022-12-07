@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rock, Paper, Scissors</title>
+  <link rel="stylesheet" href="./assets/css/reset.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Rock, Paper, Scissors</h1>
+    </header>
+    <main>
+        <aside>
+            <h2>Results</h2>
+            <div class = "score-board">
+            <ul>
+                <li id = "result-won"> 0 Wins</li>
+                <li id = "result-tied"> 0 Ties</li>
+                <li id = "result-loss"> 0 Losses</li>
+                 
+            </ul>
+            </div>
+        </aside>
+    <div class="row">
+        <div class="column">
+            <h2>Choose a button</h2>
+            <div class ="buttons">
+                <ul>
+                    <li><button id = "rock-button">Rock</button></li>
+                    <li><button id = "paper-button">Paper</button></li>
+                    <li><button id = "scissors-button">Scissors</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <h2>Game</h2>
+            <div class ="middle">
+                <ul>
+                    <li id = "your-selection">You clicked : </li>
+                    <li id = "computer-selection">The computer picked: </li>
+                    <li id = "game-result"></li>
+                </ul>
+            </div>
+        </div>
+      </div>
+    </main>
+  <script src="./assets/script/script.js"></script>
+</body>
+</html>
